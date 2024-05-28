@@ -15,7 +15,8 @@ int main()
     setlocale(LC_ALL, "Russian");
     cout << "Лабораторная работа №4. GIT\n";
     cout << "Вариант №9. Телефонные разговоры\n";
-    cout << "Автор: Сергей Ермоченко\n\n";
+    cout << "Автор: Орех Игорь\n";
+    cout << "Группа: 23ПИ1д\n";
     tell_subscribe* subscriptions[MAX_FILE_ROWS_COUNT];
     int size;
     try
