@@ -32,16 +32,21 @@ void printArray(tell_subscribe* subscriptions[], int size)
 {
     for (int i = 0; i < size; i++)
     {
+        cout << "Номер телефона: ";
         cout << subscriptions[i]->number << '\n';
-        cout << subscriptions[i]->date.day << ' ';
-        cout << subscriptions[i]->date.month << ' ';
+        cout << "Дата: ";
+        cout << subscriptions[i]->date.day << '.';
+        cout << subscriptions[i]->date.month << '.';
         cout << subscriptions[i]->date.year << '\n';
-        cout << subscriptions[i]->time_start.seconds << ' ';
-        cout << subscriptions[i]->time_start.minuts << ' ';
+        cout << "Время начала разговора: ";
+        cout << subscriptions[i]->time_start.seconds << ':';
+        cout << subscriptions[i]->time_start.minuts << ':';
         cout << subscriptions[i]->time_start.hours << '\n';
-        cout << subscriptions[i]->time_duration.seconds << ' ';
-        cout << subscriptions[i]->time_duration.minuts << ' ';
+        cout << "Продолжительность разговора: ";
+        cout << subscriptions[i]->time_duration.seconds << ':';
+        cout << subscriptions[i]->time_duration.minuts << ':';
         cout << subscriptions[i]->time_duration.hours << '\n';
+        cout << "Тариф: ";
         if (subscriptions[i]->tarif == Tarifs::город)
             cout << "город";
         else if (subscriptions[i]->tarif == Tarifs::межгород)
@@ -51,6 +56,7 @@ void printArray(tell_subscribe* subscriptions[], int size)
         else if (subscriptions[i]->tarif == Tarifs::мобильный)
             cout << "мобильный";
         cout << '\n';
+        cout << "Цена: ";
         cout << subscriptions[i]->cost << '\n';
         cout << '\n';
     }
