@@ -7,7 +7,7 @@ using namespace std;
 #include "constants.h"
 #include "file_reader.h"
 #include "filter.h"
-
+#include "sort.h"
 
 
 int main()
@@ -23,34 +23,46 @@ int main()
     {
         read("data.txt", subscriptions, size); 
 
-        for (int i = 0; i < size; i++)
-        {
-            cout << subscriptions[i]->number << '\n';
-            cout << subscriptions[i]->date.day << ' ';
-            cout << subscriptions[i]->date.month << ' ';
-            cout << subscriptions[i]->date.year << '\n';
-            cout << subscriptions[i]->time_start.seconds << ' ';
-            cout << subscriptions[i]->time_start.minuts << ' ';
-            cout << subscriptions[i]->time_start.hours << '\n';
-            cout << subscriptions[i]->time_duration.seconds << ' ';
-            cout << subscriptions[i]->time_duration.minuts << ' ';
-            cout << subscriptions[i]->time_duration.hours << '\n';
-            if (subscriptions[i]->tarif == Tarifs::город)
-                cout << "город";
-            else if (subscriptions[i]->tarif == Tarifs::межгород)
-                cout << "межгород";
-            else if (subscriptions[i]->tarif == Tarifs::международный)
-                cout << "международный";
-            else if (subscriptions[i]->tarif == Tarifs::мобильный)
-                cout << "мобильный";
-            cout << '\n';
-            cout << subscriptions[i]->cost << '\n';
-            cout << '\n';
+        printArray(subscriptions, size);
+
+        int n, nn;     
+        cout << "\nВыберите сортировку:\n";
+        cout << "1)Пирамидальная сортировка (Heap sort)\n2)Быстрая сортировка(Quick sort)\n";
+
+        cin >> nn;
+
+        cout << "\nВыберите критерий сортировки:\n";
+        cout << "1)По убыванию продолжительности разговора\n2)По возрастанию номера телефона, а в рамках одного номера по убыванию стоимости разговора\n";
+
+        cin >> n;
+
+        bool (*check_arr)(tell_subscribe * el1, tell_subscribe * el2);
+        switch (n) {
+        case 1:
+            check_arr = _by_duration_desc;
+            break;
+        case 2:
+            check_arr = _by_phone_asc_and_cost_desc;
+            break;
+        default:
+            check_arr = _by_duration_desc;
         }
+
+        switch (nn) {
+        case 1:
+            heapSort(subscriptions, size, *check_arr);
+            break;
+        case 2:
+            qsort(subscriptions, 0, size, *check_arr);
+            break;
+        }
+
+        printArray(subscriptions, size);
+
         cout << "\nВыберите функцию для фильтрации:\n";
         cout << "1)Вывести все телефонные разговоры на мобильные телефоны.\n2)Вывести все телефонные разговоры в ноябре 2021 года.\n";
-        int n;
         cin >> n;
+
         switch (n) {
         case 1:
         {
