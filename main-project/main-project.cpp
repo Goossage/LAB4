@@ -28,11 +28,11 @@ int main()
             cout << subscriptions[i]->date.day << ' ';
             cout << subscriptions[i]->date.month << ' ';
             cout << subscriptions[i]->date.year << '\n';
-            cout << subscriptions[i]->time_start.seconds << ':';
-            cout << subscriptions[i]->time_start.minuts << ':';
+            cout << subscriptions[i]->time_start.seconds << ' ';
+            cout << subscriptions[i]->time_start.minuts << ' ';
             cout << subscriptions[i]->time_start.hours << '\n';
-            cout << subscriptions[i]->time_duration.seconds << ':';
-            cout << subscriptions[i]->time_duration.minuts << ':';
+            cout << subscriptions[i]->time_duration.seconds << ' ';
+            cout << subscriptions[i]->time_duration.minuts << ' ';
             cout << subscriptions[i]->time_duration.hours << '\n';
             if (subscriptions[i]->tarif == Tarifs::город)
                 cout << "город";
