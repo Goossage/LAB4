@@ -47,6 +47,28 @@ int main()
             cout << subscriptions[i]->cost << '\n';
             cout << '\n';
         }
+        cout << "\nВыберите функцию для фильтрации:\n";
+        cout << "1)Вывести все телефонные разговоры на мобильные телефоны.\n2)Вывести все телефонные разговоры в ноябре 2021 года.\n";
+        int n;
+        cin >> n;
+        switch (n) {
+        case 1:
+        {
+            bool (*check)(tell_subscribe * element) = areMobile;
+            int result_size;
+            tell_subscribe** out = filter(subscriptions, size, check, result_size);
+            printArray(out, result_size);
+            break;
+        }
+        case 2:
+        {
+            bool (*check)(tell_subscribe * element) = isNovember2021;
+            int result_size;
+            tell_subscribe** out = filter(subscriptions, size, check, result_size);
+            printArray(out, result_size);
+            break;
+        }
+        }
         for (int i = 0; i < size; i++)
         {
             delete subscriptions[i];
