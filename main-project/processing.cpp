@@ -3,9 +3,8 @@
 
 double process(tell_subscribe* subscriptions[], int size) {
 	int S = 0;
-	tell_subscribe* iter = *subscriptions;
-	tell_subscribe* end = *subscriptions + size;
-	for (iter; iter <= end; iter++)
-		S += iter->cost;
+	if (size == 0) return 0;
+	for (int i = 0; i < size; i++)
+		S += subscriptions[i]->cost;
 	return (double)S / size;
 }
